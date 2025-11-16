@@ -20,7 +20,7 @@ class TestCreateCourer:
         assert response.status_code == 409
 
 
-    @allure.title("если одного из полей, поля 'login', запрос возвращает ошибку")
+    @allure.title("если нет одного из полей, поля 'login', запрос возвращает ошибку")
     @allure.description("Проверка,чтобы создать курьера, обязательностьполя 'login'")
     def test_login_is_required(self):
         body = CourierFactory.courier_body_random_name_pass()
@@ -31,7 +31,7 @@ class TestCreateCourer:
                 response.json().get('message') == "Недостаточно данных для создания учетной записи")
 
 
-    @allure.title("если одного из полей, поля 'password', запрос возвращает ошибку")
+    @allure.title("если нет одного из полей, поля 'password', запрос возвращает ошибку")
     @allure.description("Проверка,чтобы создать курьера, обязательность поля 'password'")
     def test_password_is_required(self):
         body = CourierFactory.courier_body_random_name_pass()
