@@ -4,4 +4,4 @@ class Url:
     LOGIN_COURIER_PATH='/api/v1/courier/login'
     CREATE_ORDER_PATH='/api/v1/orders'
     LIST_ORDER_PATH='/api/v1/orders'
-    DELETE_COURIER='/api/v1/courier/'+'id'
+    

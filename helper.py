@@ -3,24 +3,24 @@ from faker import Faker
 
 
 
-# class CourierFactory:
-#     @staticmethod
-#     @allure.step("Генерация body для создания курьера")
-#     def courier_body_random_name_pass():
-#         faker = Faker('ru_RU')
-#         body={"login": faker.user_name(),
-#               "password": faker.password(),
-#               "firstName": faker.first_name()}
+class CourierFactory:
+    @staticmethod
+    @allure.step("Генерация body для создания курьера")
+    def courier_body_random_name_pass():
+        faker = Faker('ru_RU')
+        body={"login": faker.user_name(),
+              "password": faker.password(),
+              "firstName": faker.first_name()}
 
-#         return body
+        return body
 
 
-    # @staticmethod
-    # @allure.step("Удаление поля из тела заказа")
-    # def remove_field(body: dict, field: str) -> dict:
-    #     copied = body.copy()
-    #     copied.pop(field, None)
-    #     return copied
+    @staticmethod
+    @allure.step("Удаление поля из тела заказа")
+    def remove_field(body: dict, field: str) -> dict:
+        copied = body.copy()
+        copied.pop(field, None)
+        return copied
 
 
 
