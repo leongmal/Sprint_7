@@ -9,15 +9,7 @@ class CreateCourier:
     @staticmethod
     @allure.step("Отправка запроса на создание курьера")
     def create_courier(body):
-        return requests.post(Url.BASE_URL+Url.CREATE_COURIER_PATH, json=body, headers={"Content-Type": "application/json"})
-
-
-    @staticmethod
-    @allure.step("Отправка запроса на создание одинаковых курьеров")
-    def not_create_courier_double(body):
-        requests.post(Url.BASE_URL+Url.CREATE_COURIER_PATH, json=body, headers={"Content-Type": "application/json"})
-        return requests.post(Url.BASE_URL+Url.CREATE_COURIER_PATH, json=body, headers={"Content-Type": "application/json"})
-
+        return requests.post(Url.BASE_URL + Url.CREATE_COURIER_PATH, json=body, headers={"Content-Type": "application/json"})
 
 
     @staticmethod
@@ -35,10 +27,9 @@ class CreateCourier:
     @allure.step("отправка запроса на авторизацию курьера без 'login'")
     def authorization_no_login():
         body = CourierFactory.courier_body_random_name_pass()
-        CreateCourier.create_courier(body)
-        auth_body = {"password": body["password"]}
+        body_no_login =CourierFactory.remove_field(body, 'login')
+        return  CreateCourier.create_courier(body_no_login)
 
-        return requests.post(Url.BASE_URL+Url.LOGIN_COURIER_PATH, json=auth_body)
 
 
     @staticmethod
