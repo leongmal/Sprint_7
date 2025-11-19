@@ -2,7 +2,6 @@ import allure
 from faker import Faker
 
 
-
 class CourierFactory:
     @staticmethod
     @allure.step("Генерация body для создания курьера")
@@ -39,5 +38,5 @@ class OrderFactory:
             "rentTime": 5,
             "deliveryDate": "2025-12-06",
             "comment": faker.sentence(),
-            "color": []  # по умолчанию без цветов
+            "color": []  
         }

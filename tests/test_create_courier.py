@@ -1,6 +1,5 @@
 import allure
 from api.create_courier import CreateCourier
-from helper import CourierFactory
 from data import Response
 
 
@@ -28,7 +27,7 @@ class TestCreateCourer:
     @allure.title("Если нет одного из полей, поля 'login', запрос возвращает ошибку")
     @allure.description("Проверка,чтобы создать курьера, обязательностьполя 'login'")
     def test_login_is_required(self):
-        response = CreateCourier.authorization_no_login()
+        response = CreateCourier.request_no_login()
 
         assert (response.status_code == 400 and
                 response.json().get('message') == Response.NOT_ENOUNGH_DATA)
@@ -37,9 +36,7 @@ class TestCreateCourer:
     @allure.title("Если нет одного из полей, поля 'password', запрос возвращает ошибку")
     @allure.description("Проверка,чтобы создать курьера, обязательность поля 'password'")
     def test_password_is_required(self):
-        body = CourierFactory.courier_body_random_name_pass()
-        body_copy = body.copy()
-        body_copy['password'] = " "
-        response = CreateCourier.create_courier(body_copy['password'])
+        body_no_pass = CreateCourier.request_no_password()
+        response = CreateCourier.create_courier(body_no_pass)
 
         assert (response.status_code == 400 and response.json()["code"] == 400)

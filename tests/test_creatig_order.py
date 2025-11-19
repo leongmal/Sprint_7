@@ -3,7 +3,7 @@ import allure
 from api.create_orders import CreateOrder
 
 
-@allure.feature("Создание заказа")
+@allure.feature("Проверка создания заказа")
 @allure.story("Проверка параметров цвета при создании заказа")
 class TestOrderCreation:
 
